@@ -3,8 +3,8 @@ package com.leon.funwallet;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.InsufficientMoneyException;
@@ -91,7 +90,8 @@ public class BitcoinWalletActivity extends AppCompatActivity {
             public void run() {
                 Coin balance = wallet.getBalance(Wallet.BalanceType.ESTIMATED);
                 mAddressText.setText(address.toString());
-                mBalanceText.setText(String.valueOf(balance.value));
+                String balanceString = String.valueOf(balance.value / 100000) + " mBTC";
+                mBalanceText.setText(balanceString);
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
                 bitmapDrawable.setFilterBitmap(false);
                 mQrImageView.setImageDrawable(bitmapDrawable);

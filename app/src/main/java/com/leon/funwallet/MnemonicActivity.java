@@ -6,13 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import org.bitcoinj.crypto.ChildNumber;
-import org.bitcoinj.crypto.DeterministicHierarchy;
-import org.bitcoinj.crypto.DeterministicKey;
-import org.bitcoinj.crypto.HDKeyDerivation;
-import org.bitcoinj.crypto.MnemonicCode;
-import org.bitcoinj.crypto.MnemonicException;
+import org.bitcoinj.crypto.*;
 import org.bitcoinj.wallet.DeterministicKeyChain;
 import org.bitcoinj.wallet.DeterministicSeed;
 import org.web3j.crypto.CipherException;
@@ -82,7 +76,10 @@ public class MnemonicActivity extends AppCompatActivity {
         byte[] entropy = new byte[DeterministicSeed.DEFAULT_SEED_ENTROPY_BITS / 8];
         secureRandom.nextBytes(entropy);
         return  MnemonicCode.INSTANCE.toMnemonic(entropy);
+
     }
+
+
 
     public void onImportMnemonics(View view) throws CipherException, MnemonicException.MnemonicLengthException, MnemonicException.MnemonicWordException, MnemonicException.MnemonicChecksumException {
         String s = importMnemonicEdit.getText().toString().trim();
